@@ -1,0 +1,9 @@
+tiny_core_users
+
+Simple reusable user management with generator based on authlogic.
+
+Usage:
+
+  script/generate tiny_user
+
+Note: this is pre-alpha and very likely to change in an incompatible fashion.
