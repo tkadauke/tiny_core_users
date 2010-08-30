@@ -14,6 +14,7 @@ class TinyUserGenerator < Rails::Generator::Base
       m.directory 'app/views/password_resets_mailer'
       m.directory 'app/views/user_sessions'
       m.directory 'app/views/users'
+      m.directory 'config/locales'
       m.directory 'test/unit'
       m.directory 'test/functional'
 
@@ -26,6 +27,10 @@ class TinyUserGenerator < Rails::Generator::Base
       m.file "user_session.rb", 'app/models/user_session.rb'
       m.file "user_sessions_controller.rb", 'app/controllers/user_sessions_controller.rb'
       m.file "users_controller.rb", 'app/controllers/users_controller.rb'
+      
+      # Locales
+      m.file "users_en.yml", 'config/locales/users_en.yml'
+      m.file "users_de.yml", 'config/locales/users_de.yml'
       
       # Views
       base_dir = File.dirname(__FILE__) + '/templates'
