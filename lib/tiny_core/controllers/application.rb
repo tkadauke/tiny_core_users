@@ -28,11 +28,11 @@ module TinyCore
       end
 
       def login_required
-        deny_access(I18n.t("flash.error.login_required"), login_path) unless current_user
+        deny_access(I18n.t("flash.error.login_required"), login_path) unless logged_in?
       end
 
       def guest_required
-        deny_access(I18n.t("flash.error.guest_required")) if current_user
+        deny_access(I18n.t("flash.error.guest_required")) if logged_in?
       end
 
       def deny_access(message = nil, path = root_path)
@@ -52,7 +52,7 @@ module TinyCore
       end
 
       def logged_in?
-        !current_user.nil?
+        !current_user.guest?
       end
 
     private
@@ -63,7 +63,7 @@ module TinyCore
 
       def current_user
         return @current_user if defined?(@current_user)
-        @current_user = current_user_session && current_user_session.user
+        @current_user = (current_user_session && current_user_session.user) || Guest.new
       end
     end
   end

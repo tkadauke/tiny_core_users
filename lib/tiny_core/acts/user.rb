@@ -62,6 +62,10 @@ module TinyCore
         def name
           full_name
         end
+        
+        def guest?
+          false
+        end
       end
       
       def self.included(receiver)
